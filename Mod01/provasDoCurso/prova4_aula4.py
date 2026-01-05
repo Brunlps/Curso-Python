@@ -22,11 +22,11 @@ if numeroContagem1 < numeroContagem2:
     for element in range(numeroContagem1, numeroContagem2):
         # Verifica os elemento que são pares
         if element % 2 == 0:
-            print(f"Números pares de {numeroContagem2}: {element}")
+            print(f"Número par encontrado: {element}")
             soma += element # Soma cada número percorrido
-            element += element
+            
 
     print(f"A soma dos números pares de {numeroContagem1} a {numeroContagem2} é: {soma}")        
 
 else:
-    print("Não existi números pares nesse intervalo!")
+    print("O intervalo informado não está em ordem crescente.")
