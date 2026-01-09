@@ -21,6 +21,8 @@ print(convidados)
 convidados.add('pedro')
 print(convidados)
 
+
+
 # Método para adicionar um conjunto ao set
 ids = {'12', '63', '14'}
 print(ids)
