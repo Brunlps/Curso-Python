@@ -8,6 +8,7 @@
 # 3 - VER POKEMONS POR TIPO
 # 4 - EXCLUIR POKEMON
 # 0 - SAIR
+
 lista_pokemons = []
 while True:
   menu = input("""

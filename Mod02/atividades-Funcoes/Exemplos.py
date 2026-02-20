@@ -29,13 +29,16 @@ l = [10, 20, 25, 30, 45]
 # # print(pesquise(l, 25)) # Existe no índice 3
 # # print(pesquise(l, 27)) # Não existe
 # # print(media(l)) # Soma todos os números
-# print(soma(l)) # Calcula a média dos números
+# print(soma(l)) # Calcula a médsia dos números
 
 # ==== Programa 8.2 ====
 # Como não escrever uma função
 def soma(l):
-    """ Essa função apenas vai somar os 5 primeiros números da lista, o uso do laço while 
-    será usado para encontrar esse 5 números e calcular eles"""
+    """ 
+    Essa função apenas vai somar os 5 primeiros números da lista, 
+    o uso do laço while 
+    será usado para encontrar esse 5 números e calcular eles
+    """
     total = 0
     x = 0
     while x < 5:
@@ -44,5 +47,5 @@ def soma(l):
     return total
 print(soma([1, 2, 45, 200, 90, 34])) # 
 print(soma(l))  
-     
+
 # ==== Programa 8.1 ====
