@@ -1,0 +1,45 @@
+# 📚 Módulo: Programação Orientada a Objetos (POO)
+
+Este diretório é dedicado ao aprofundamento em Programação Orientada a Objetos, focando na construção de arquiteturas limpas, modulares e escaláveis para o backend.
+
+## 🎯 Foco Atual: Classes, Objetos e Passagem de Parâmetros
+
+Quando trabalhamos com a modelagem de sistemas, frequentemente precisamos que diferentes entidades (objetos) interajam e troquem informações. 
+
+Em linguagens como Python, a passagem de objetos como parâmetros para funções ou métodos ocorre por **referência a objetos** (pass-by-object-reference). Isso significa que, ao passar um objeto, você não está criando uma cópia pesada dele na memória, mas sim entregando a "chave" (a referência) de onde aquele dado real está armazenado.
+
+
+
+Se o objeto passado for mutável e você alterar seus atributos dentro do método, essa alteração refletirá no objeto original fora do método.
+
+### 💻 Exemplo Prático: Passagem de Parâmetros entre Classes
+
+Pensando na lógica central de uma API para a área da saúde, podemos ter uma classe de domínio `Paciente` sendo passada inteira como parâmetro para inicializar um objeto da classe `Consulta`. 
+
+Isso evita que tenhamos que passar variáveis soltas (nome, cpf, idade) repetidas vezes, tornando o código mais limpo.
+
+```python
+class Paciente:
+    def __init__(self, nome, cpf):
+        self.nome = nome
+        self.cpf = cpf
+
+class Consulta:
+    # O parâmetro 'paciente' espera receber a referência de um objeto Paciente instanciado
+    def __init__(self, paciente, data_horario, medico):
+        self.paciente = paciente 
+        self.data_horario = data_horario
+        self.medico = medico
+        self.status = "Agendada"
+
+    def exibir_resumo(self):
+        # Acessando os atributos do objeto passado como parâmetro
+        return f"Consulta de {self.paciente.nome} agendada para {self.data_horario} com Dr(a). {self.medico}"
+
+# 1. Instanciando o objeto base
+paciente_atual = Paciente("Ana Silva", "123.456.789-00")
+
+# 2. Passando o objeto 'paciente_atual' como parâmetro para compor a Consulta
+nova_consulta = Consulta(paciente_atual, "2026-04-15 14:00", "Cardiologia")
+
+print(nova_consulta.exibir_resumo())
