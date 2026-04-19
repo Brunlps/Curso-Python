@@ -1,4 +1,3 @@
-#Classe principal
 class Mamifaro:
     def __init__(self, localizacao: str):
         self.localizao = localizacao
