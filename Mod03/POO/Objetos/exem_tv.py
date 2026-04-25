@@ -11,7 +11,8 @@ class Televisao:
 
     def mudar_canal_para_cima(self):
         self.canal += 1
-        
+
+   
 # Objeto que recebe a classe principal.
 tv = Televisao()
 tv.mudar_canal_para_baixo()

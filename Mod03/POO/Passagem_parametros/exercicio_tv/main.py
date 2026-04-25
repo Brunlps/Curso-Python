@@ -1,4 +1,4 @@
-from exercicio_tv import Televisao
+from controle_tv import Televisao
 
 
 def exibir_menu():
