@@ -4,7 +4,7 @@ Projeto desenvolvido como trabalho do curso de Python, no módulo de Programaç�
 
 ## Objetivo
 
-Criar um sistema simples de gerenciamento de hotel via terminal, onde é possível cadastrar clientes, visualizar quartos disponíveis, criar e modificar reservas.
+Criar um sistema simples de gerenciamento de hotel via terminal, onde é possível cadastrar clientes, visualizar quartos disponíveis, criar, modificar e cancelar reservas.
 
 ## Estrutura do projeto
 
@@ -20,7 +20,7 @@ Representa um quarto do hotel.
 
 ### `Reserva`
 Representa uma reserva feita por um cliente.
-- `dono_reserva` (objeto `Cliente`), `quarto_reservado` (objeto `Quarto`), `data_check_in`, `data_check_out`, `status_reserva`
+- `dono_reserva` (objeto `Cliente`), `quarto_resevado` (objeto `Quarto`), `data_check_in`, `data_check_out`, `status_reserva`
 
 ### `GerenciadorDeReserva`
 Classe principal que gerencia clientes, quartos e reservas do hotel.
@@ -43,27 +43,24 @@ O programa inicia com 3 quartos pré-cadastrados (101, 102, 103) e abre um menu 
 3 - Criar reserva
 4 - Modificar reserva
 5 - Cancelar reserva
+6 - Listar reservas
+7 - Listar clientes
+8 - Listar quartos
 0 - Sair
 ```
 
-## O que já foi implementado
+## Funcionalidades implementadas
 
-- [x] Classe `Cliente`
-- [x] Classe `Quarto`
-- [x] Classe `Reserva`
+- [x] Classe `Cliente` com `__str__`
+- [x] Classe `Quarto` com `__str__`
+- [x] Classe `Reserva` com `__str__`
 - [x] Cadastro de clientes com ID automático
-- [x] Quartos pré-cadastrados ao iniciar o sistema
+- [x] Quartos pré-cadastrados ao iniciar o sistema (101, 102, 103)
 - [x] Verificação de quartos disponíveis
-- [x] Criação de reserva (busca cliente, busca quarto, pede datas, salva reserva e marca quarto como ocupado)
-- [x] Busca de reserva por ID do cliente (base para modificar e cancelar)
-- [x] Menu interativo com `while` + `match`
-
-## O que ainda falta
-
-- [ ] Finalizar `modificar_reservas` — permitir alterar datas da reserva encontrada
-- [ ] Implementar `cancelar_reservas` — cancelar reserva e liberar o quarto
-- [ ] Implementar `get_clientes` — listar todos os clientes cadastrados
-- [ ] Implementar `get_reserva` — listar todas as reservas ativas
-- [ ] Conectar opções 4 e 5 do menu aos métodos correspondentes
-- [ ] Adicionar `break` no `case "0"` para sair do programa
-- [ ] Adicionar `__str__` nas classes para exibir informações de forma legível
+- [x] Criação de reserva — busca cliente e quarto, pede datas, salva e marca quarto como ocupado
+- [x] Modificação de reserva — altera datas por ID do cliente
+- [x] Cancelamento de reserva — cancela e libera o quarto automaticamente
+- [x] Listagem de clientes cadastrados
+- [x] Listagem de reservas do histórico
+- [x] Listagem de quartos
+- [x] Menu interativo com `while` + `match` + `break` para sair

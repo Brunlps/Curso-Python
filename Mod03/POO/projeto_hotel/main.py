@@ -5,24 +5,31 @@ class Cliente:
         self.telefone = telefone
         self.email = email
 
+    def __str__(self):
+        return f"[ID: {self.id_cliente}] {self.nome} | {self.telefone} | {self.email}"
 
 
-class Quarto:
+
+class Quarto: 
     def __init__(self, numero_quarto, tipo_quarto, preco_diaria, status):
         self.numero_quarto = numero_quarto
         self.tipo_quarto = tipo_quarto
         self.preco_diaria = preco_diaria
         self.status = status
-
+    def __str__(self):
+        return f"Quarto: {self.numero_quarto}: {self.tipo_quarto} | {self.preco_diaria} | {self.status}"
 
 
 class Reserva:
-    def __init__(self, dono_reseva, quarto_resevado, data_chek_in, data_chek_out, status_reserva):
+    def __init__(self, dono_reseva, quarto_resevado, data_check_in, data_check_out, status_reserva):
         self.dono_reserva = dono_reseva
         self.quarto_resevado = quarto_resevado
-        self.data_chek_in = data_chek_in
-        self.data_chek_out = data_chek_out
+        self.data_check_in = data_check_in
+        self.data_check_out = data_check_out
         self.status_reserva = status_reserva
+
+    def __str__(self):
+        return f"Cliente: {self.dono_reserva} | {self.quarto_resevado} | {self.data_check_in} | {self.data_check_out} | {self.status_reserva}"
 
 
 class GerenciadorDeReserva(Cliente, Quarto, Reserva):
@@ -65,6 +72,7 @@ class GerenciadorDeReserva(Cliente, Quarto, Reserva):
                 print(f"Quartos disponíveis: {quartos}")
 
     def criar_reservas(self):
+
         # Buscando clientes
         id_buscador = int(input("ID do cliente: "))
 
@@ -100,8 +108,8 @@ class GerenciadorDeReserva(Cliente, Quarto, Reserva):
         nova_reserva = Reserva(
             dono_reseva=cliente_encotrado,
             quarto_resevado=quarto_encotrado,
-            data_chek_in=data_check_in,
-            data_chek_out=data_check_out,
+            data_check_in=data_check_in,
+            data_check_out=data_check_out,
             status_reserva="Ativa")
         
         self.historico_reservas.append(nova_reserva)
@@ -122,15 +130,55 @@ class GerenciadorDeReserva(Cliente, Quarto, Reserva):
         if reserva_encotrado is None:
             print("Reserva não encontrado.")
             return
+        
+        print(f"Reserva atual: {reserva_encotrado}")
+
+        # Add datas
+        nova_data_check_in = input("Nova Data de check-in (dd/mm/aaaa): ")
+        nova_data_check_out = input("Nova Data de check-out (dd/mm/aaaa): ")
+
+        reserva_encotrado.data_check_in = nova_data_check_in
+        reserva_encotrado.data_check_out = nova_data_check_out
+
+        print("Reserva modificada com sucesso!")
 
     def cancelar_reservas(self):
-        ...
+        id_buscador = int(input("ID do cliente: "))
+
+        reserva_encotrado = None
+
+        for reserva in self.historico_reservas:
+            if reserva.dono_reserva.id_cliente == id_buscador:
+                reserva_encotrado = reserva
+
+        if reserva_encotrado is None:
+            print("Reserva não encontrado.")
+            return
+
+        reserva_encotrado.status_reserva = "Cancelada"
+        reserva_encotrado.quarto_resevado.status = "Disponível"
+
+        print("Reserva cancelada com sucesso!")
+
 
     def get_reserva(self):
-        ...
+        for reserva in self.historico_reservas:
+            # i += 1
+            print(f"""
+                  =-=-=-=-=Reservas-=-=-=-=
+                  {reserva}""")
+            
+        return
 
     def get_clientes(self):
-        ...
+        for cliente in self.lista_clientes:
+            print(cliente)
+        return
+    
+    def get_quartos(self):
+        for quarto in self.lista_quartos:
+            print(quarto)
+        return
 
 
 
@@ -152,26 +200,38 @@ while True:
         3 - Criar reserva
         4 - Modificar reservar
         5 - Cancelar Reserva
+        6 - Reservas
+        7 - Clientes
+        8 - Quartos
         0 - Sair
-                    """)
+        Escolha uma opção: """)
     
     match opcao:
 
         case "1":
-
             hotel.cadastro_clientes()
-            print(hotel.lista_clientes)
 
         case "2":
-
             hotel.verificar_disponibilidade_quartos()
 
         case "3":
             hotel.criar_reservas()
 
         case "4":
-            ...
+            hotel.modificar_reservas()
+
         case "5":
-            ...
+            hotel.cancelar_reservas()
+
+        case "6":
+            hotel.get_reserva()
+
+        case "7":
+            hotel.get_clientes()
+
+        case "8":
+            hotel.get_quartos()
+
         case "0":
-            ...
+            print("Saindo do sistema!")
+            break
